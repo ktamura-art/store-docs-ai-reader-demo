@@ -185,7 +185,7 @@ function renderReview() {
   const q = list.map(x => {
     const st = statusOf(x), n = unresolved(x);
     return `<div class="qi${x.id === S.cur ? " sel" : ""}" data-doc="${x.id}">
-      <div class="q1">${tbadge(x.type)}<b>${esc(storeBy(x.store).name)}</b><span class="qd">${md(x.docDate)}分</span></div>
+      <div class="q1">${tbadge(x.type)}<b>${esc(x.store === "H00" ? val(x, "sup") + " → 本部" : storeBy(x.store).name)}</b><span class="qd">${md(x.docDate)}分</span></div>
       <div class="q2"><span>${x.via} ${hm(x.arrival)} 着</span>${st === "check" ? `<span class="sc s-check">要確認 ${n}</span>` : schip(st)}</div></div>`;
   }).join("") || `<div class="empty">該当する書類はありません</div>`;
 
